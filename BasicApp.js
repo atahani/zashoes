@@ -1,16 +1,16 @@
 import React from 'react';
 import {Platform, StatusBar, View} from 'react-native';
 import {AppLoading, Asset, Font} from 'expo';
-import { Ionicons } from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
 import styled from 'styled-components/native';
 import RootNavigation from './navigation/RootNavigation';
 
-const Container = styled.View`
+const Container = styled.View `
   flex: 1;
   background-color: #fff;
 `;
 
-const StatusBarUnderlay = styled.View`
+const StatusBarUnderlay = styled.View `
   height: 24;
   background-color: 'rgba(0,0,0,0.2)';
 `;
@@ -30,7 +30,7 @@ export default class BasicApp extends React.Component {
       return (
         <Container>
           {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
-          {Platform.OS === 'android' && <StatusBarUnderlay />}
+          {Platform.OS === 'android' && <StatusBarUnderlay/>}
           <RootNavigation/>
         </Container>
       );
@@ -39,7 +39,10 @@ export default class BasicApp extends React.Component {
 
   _loadResourcesAsync = async() => {
     return Promise.all([
-      Asset.loadAsync([require('./assets/images/robot-dev.png'), require('./assets/images/robot-prod.png')]),
+      Asset.loadAsync([
+        require('./assets/images/kids.jpg'),
+        require('./assets/images/men.jpg', require('./assets/images/women.jpg'))
+      ]),
       Font.loadAsync([
         // to add expo Ionicons
         Ionicons.font,
