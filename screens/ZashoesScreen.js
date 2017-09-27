@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components/native';
 import {lighten} from 'polished';
-import {ExpoLinksView} from '@expo/samples';
 import Colors from '../constants/Colors';
 
 const ScrollView = styled
@@ -15,6 +14,13 @@ const ScrollView = styled
   flex: 1;
   display: flex;
   flex-direction: column;
+`;
+
+const TouchArea = styled.TouchableHighlight `
+  flex:1 ;
+  align-self: center;
+  width: 100%;
+  height: 100%;
 `;
 
 const Item = styled.View `
@@ -59,23 +65,31 @@ class ZashoesScreen extends Component {
   };
 
   render() {
+    const {navigate} = this.props.navigation;
+
     return (
       <ScrollView>
-        <Item>
-          <Title>Women</Title>
-          <Image source={require('../assets/images/women.jpg')}/>
-          <Overlay/>
-        </Item>
-        <Item>
-          <Title>Men</Title>
-          <Image source={require('../assets/images/men.jpg')}/>
-          <Overlay/>
-        </Item>
-        <Item>
-          <Title>Kids</Title>
-          <Image source={require('../assets/images/kids.jpg')}/>
-          <Overlay/>
-        </Item>
+        <TouchArea onPress={() => navigate('ShoesList', {type: 'women'})}>
+          <Item>
+            <Title>Women</Title>
+            <Image source={require('../assets/images/women.jpg')}/>
+            <Overlay/>
+          </Item>
+        </TouchArea>
+        <TouchArea onPress={() => navigate('ShoesList', {type: 'men'})}>
+          <Item>
+            <Title>Men</Title>
+            <Image source={require('../assets/images/men.jpg')}/>
+            <Overlay/>
+          </Item>
+        </TouchArea>
+        <TouchArea onPress={() => navigate('ShoesList', {type: 'kids'})}>
+          <Item>
+            <Title>Kids</Title>
+            <Image source={require('../assets/images/kids.jpg')}/>
+            <Overlay/>
+          </Item>
+        </TouchArea>
       </ScrollView>
     );
   }

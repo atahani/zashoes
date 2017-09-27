@@ -4,10 +4,11 @@ import {TabNavigator, TabBarBottom} from 'react-navigation';
 import { createIconSetFromFontello } from '@expo/vector-icons';
 import fontelloConfig from '../icon_font_config.json';
 import Colors from '../constants/Colors';
-import { ZashoesScreen } from '../screens';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ShoesNavigation from './ShoesNavigation';
+import ZashoesScreen from '../screens/ZashoesScreen';
+import SearchScreen from '../screens/SearchScreen';
+import MyBagScreen from '../screens/MyBagScreen';
+import MyAccountScreen from '../screens/MyAccountScreen';
 
 
 // using fontello font icon 
@@ -15,17 +16,17 @@ import SettingsScreen from '../screens/SettingsScreen';
 const Icon = createIconSetFromFontello(fontelloConfig, 'zashoes-fontello');
 
 export default TabNavigator({
-  shoes: {
-    screen: ZashoesScreen
+  Shoes: {
+    screen: ShoesNavigation
   },
-  search: {
-    screen: HomeScreen
+  Search: {
+    screen: SearchScreen
   },
-  mybag: {
-    screen: LinksScreen
+  MyBag: {
+    screen: MyBagScreen
   },
-  myaccount: {
-    screen: SettingsScreen
+  MyAccount: {
+    screen: MyAccountScreen
   }
 }, {
   navigationOptions: ({navigation}) => ({
@@ -33,16 +34,16 @@ export default TabNavigator({
       const {routeName} = navigation.state;
       let iconName;
       switch (routeName) {
-        case 'shoes':
+        case 'Shoes':
           iconName = 'zashoes'
           break;
-        case 'search':
+        case 'Search':
           iconName = 'search'
           break;
-        case 'mybag':
+        case 'MyBag':
           iconName = 'shopping-bag'
           break;
-        case 'myaccount':
+        case 'MyAccount':
         iconName = Platform.OS === 'ios'
         ? `user-circle${focused
           ? ''

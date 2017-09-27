@@ -1,6 +1,7 @@
 import React from 'react';
 import {Platform, StatusBar, View} from 'react-native';
 import {AppLoading, Asset, Font} from 'expo';
+import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 import RootNavigation from './navigation/RootNavigation';
 
@@ -40,6 +41,8 @@ export default class BasicApp extends React.Component {
     return Promise.all([
       Asset.loadAsync([require('./assets/images/robot-dev.png'), require('./assets/images/robot-prod.png')]),
       Font.loadAsync([
+        // to add expo Ionicons
+        Ionicons.font,
         // fontello for for icons
         {
           'zashoes-fontello': require('./assets/fonts/icon.ttf')
