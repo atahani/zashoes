@@ -5,7 +5,6 @@ import { createIconSetFromFontello } from '@expo/vector-icons';
 import fontelloConfig from '../icon_font_config.json';
 import Colors from '../constants/Colors';
 import ShoesNavigation from './ShoesNavigation';
-import SearchScreen from '../screens/SearchScreen';
 import MyBagScreen from '../screens/MyBagScreen';
 import MyAccountScreen from '../screens/MyAccountScreen';
 
@@ -16,9 +15,6 @@ const Icon = createIconSetFromFontello(fontelloConfig, 'zashoes-fontello');
 export default TabNavigator({
   Shoes: {
     screen: ShoesNavigation,
-  },
-  Search: {
-    screen: SearchScreen,
   },
   MyBag: {
     screen: MyBagScreen,
@@ -34,9 +30,6 @@ export default TabNavigator({
       switch (routeName) {
         case 'Shoes':
           iconName = 'zashoes';
-          break;
-        case 'Search':
-          iconName = 'search';
           break;
         case 'MyBag':
           iconName = 'shopping-bag';
