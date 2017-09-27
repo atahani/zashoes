@@ -9,12 +9,11 @@ const ScrollView = styled.ScrollView`
 const TestText = styled.Text``;
 
 export default class SearchScreen extends React.Component {
-  
-  render(){
+  render() {
     return (
       <ScrollView>
         <TestText>Search Screen</TestText>
       </ScrollView>
-    )
+    );
   }
 }

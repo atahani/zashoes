@@ -9,11 +9,11 @@ const ScrollView = styled.ScrollView`
 const TestText = styled.Text``;
 
 export default class MyAccountScreen extends React.Component {
-  render(){
+  render() {
     return (
       <ScrollView>
-          <TestText>SignUp & SingIn Forms / Related to user account</TestText>
+        <TestText>SignUp & SingIn Forms / Related to user account</TestText>
       </ScrollView>
-    )
+    );
   }
 }

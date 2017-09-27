@@ -1,7 +1,7 @@
-import {createStore, applyMiddleware, compose} from 'redux';
-import createSagaMiddleware, {END} from 'redux-saga'
-import {createLogger} from 'redux-logger';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware, { END } from 'redux-saga';
+import { createLogger } from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './reducers';
 
 // defince it as gloabal variable
@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === 'development') {
  */
 export const configureStore = initialState => {
   // create store
-  currentStore = createStore(reducers, initialState, customCompose,);
+  currentStore = createStore(reducers, initialState, customCompose);
   currentStore.runSaga = sagaMiddleware.run;
   currentStore.close = () => currentStore.dispatch(END);
   return currentStore;
@@ -60,7 +60,7 @@ export const configureStore = initialState => {
  */
 export const setAsCurrentStore = store => {
   currentStore = store;
-}
+};
 
 /**
  * get current store

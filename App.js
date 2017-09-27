@@ -1,18 +1,19 @@
 import React from 'react';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import BasicApp from './BasicApp';
-import {configureStore, setAsCurrentStore} from './store';
+import { configureStore, setAsCurrentStore } from './store';
 import rootSaga from './sagas';
 
 const App = () => {
   // configure redux
-  const store = configureStore(); store.runSaga(rootSaga);
+  const store = configureStore();
+  store.runSaga(rootSaga);
   setAsCurrentStore(store);
   return (
     <Provider store={store}>
-      <BasicApp/>
+      <BasicApp />
     </Provider>
-  )
-}
+  );
+};
 
 export default App;

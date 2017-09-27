@@ -10,10 +10,10 @@ const TestText = styled.Text``;
 
 export default class MyBagScreen extends React.Component {
   render() {
-    return(
+    return (
       <ScrollView>
-          <TestText>My Bag Items to Checkout</TestText>
+        <TestText>My Bag Items to Checkout</TestText>
       </ScrollView>
-    )
+    );
   }
 }

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components/native';
-import {lighten} from 'polished';
+import { lighten } from 'polished';
 import Colors from '../constants/Colors';
 
 const ScrollView = styled
@@ -8,8 +8,8 @@ const ScrollView = styled
   .attrs({
     // it's required since in scroll view should have height 100%
     contentContainerStyle: {
-      height: '100%'
-    }
+      height: '100%',
+    },
   })`
   flex: 1;
   display: flex;
@@ -61,33 +61,33 @@ const Image = styled.Image `
 class ZashoesScreen extends Component {
   // we don't need header for this screen
   static navigationOptions = {
-    header: null
+    header: null,
   };
 
   render() {
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
 
     return (
       <ScrollView>
-        <TouchArea onPress={() => navigate('ShoesList', {type: 'women'})}>
+        <TouchArea onPress={() => navigate('ShoesList', { type: 'women' })}>
           <Item>
             <Title>Women</Title>
-            <Image source={require('../assets/images/women.jpg')}/>
-            <Overlay/>
+            <Image source={require('../assets/images/women.jpg')} />
+            <Overlay />
           </Item>
         </TouchArea>
-        <TouchArea onPress={() => navigate('ShoesList', {type: 'men'})}>
+        <TouchArea onPress={() => navigate('ShoesList', { type: 'men' })}>
           <Item>
             <Title>Men</Title>
-            <Image source={require('../assets/images/men.jpg')}/>
-            <Overlay/>
+            <Image source={require('../assets/images/men.jpg')} />
+            <Overlay />
           </Item>
         </TouchArea>
-        <TouchArea onPress={() => navigate('ShoesList', {type: 'kids'})}>
+        <TouchArea onPress={() => navigate('ShoesList', { type: 'kids' })}>
           <Item>
             <Title>Kids</Title>
-            <Image source={require('../assets/images/kids.jpg')}/>
-            <Overlay/>
+            <Image source={require('../assets/images/kids.jpg')} />
+            <Overlay />
           </Item>
         </TouchArea>
       </ScrollView>

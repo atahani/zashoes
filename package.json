@@ -6,6 +6,8 @@
   "license": "",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "lint": "eslint *.{js,jsx} **/*.{js,jsx}",
+    "lint:fix": "eslint --fix *.{js,jsx} **/*.{js,jsx}",
     "test": "node ./node_modules/jest/bin/jest.js --watch"
   },
   "jest": {
@@ -25,6 +27,10 @@
     "styled-components": "^2.1.2"
   },
   "devDependencies": {
+    "eslint": "^4.7.2",
+    "eslint-config-equimper": "^2.2.1",
+    "eslint-plugin-flowtype": "^2.36.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "jest-expo": "^21.0.0",
     "react-native-dotenv": "^0.1.0",
     "redux-devtools-extension": "^2.13.2",
