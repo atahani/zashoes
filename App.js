@@ -4,16 +4,23 @@ import BasicApp from './BasicApp';
 import { configureStore, setAsCurrentStore } from './store';
 import rootSaga from './sagas';
 
-const App = () => {
-  // configure redux
-  const store = configureStore();
-  store.runSaga(rootSaga);
-  setAsCurrentStore(store);
-  return (
-    <Provider store={store}>
-      <BasicApp />
-    </Provider>
-  );
-};
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    // configure redux
+    const store = configureStore();
+    store.runSaga(rootSaga);
+    setAsCurrentStore(store);
+    this.state = {
+      store,
+    };
+  }
 
-export default App;
+  render() {
+    return (
+      <Provider store={this.state.store}>
+        <BasicApp />
+      </Provider>
+    );
+  }
+}
