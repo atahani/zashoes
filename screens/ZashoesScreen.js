@@ -69,21 +69,36 @@ class ZashoesScreen extends Component {
 
     return (
       <ScrollView>
-        <TouchArea onPress={() => navigate('ShoesList', { type: 'women' })}>
+        <TouchArea
+          onPress={() => navigate('ShoesList', {
+            title: 'Women\'s Shoes',
+            category: 'womens-shoes',
+          })}
+        >
           <Item>
             <Title>Women</Title>
             <Image source={require('../assets/images/women.jpg')} />
             <Overlay />
           </Item>
         </TouchArea>
-        <TouchArea onPress={() => navigate('ShoesList', { type: 'men' })}>
+        <TouchArea
+          onPress={() => navigate('ShoesList', {
+            title: 'Men\'s Shoes',
+            category: 'mens-shoes',
+          })}
+        >
           <Item>
             <Title>Men</Title>
             <Image source={require('../assets/images/men.jpg')} />
             <Overlay />
           </Item>
         </TouchArea>
-        <TouchArea onPress={() => navigate('ShoesList', { type: 'kids' })}>
+        <TouchArea
+          onPress={() => navigate('ShoesList', {
+            title: 'Kids\'s Shoes',
+            category: 'childrens-shoes',
+          })}
+        >
           <Item>
             <Title>Kids</Title>
             <Image source={require('../assets/images/kids.jpg')} />

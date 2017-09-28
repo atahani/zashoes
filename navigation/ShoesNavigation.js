@@ -10,14 +10,6 @@ export default StackNavigator({
   },
   ShoesList: {
     screen: ShoesListByCategoryScreen,
-    path: '/shoes/:type/:category',
-    navigationOptions: ({ navigation }) => {
-      const type = navigation.state.params.type;
-      return ({
-        headerTitle: `${type
-          .substr(0, 1)
-          .toUpperCase() + type.substr(1)}'s Shoes`,
-      });
-    },
+    path: '/shoes/:category',
   },
 });
