@@ -29,19 +29,23 @@ class ShoesListByCategory extends Component {
   }
 
   componentDidMount() {
-    const { category } = this.props.navigation.state.params;
+    const { category, shouldGetCategory } = this.props.navigation.state.params;
     const { dispatch } = this.props;
     dispatch(filterShoes({ category: [category] }));
-    dispatch(getCategoriesByParent(category));
+    // get categories if have child or if it's top
+    if (shouldGetCategory || category.split('-').length === 2) {
+      dispatch(getCategoriesByParent(category));
+    }
   }
 
-  onPressCategory(key, title) {
+  onPressCategory(key, title, shouldGetCategory) {
     this
       .props
       .navigation
       .navigate('ShoesList', {
         category: key,
         title,
+        shouldGetCategory,
       });
   }
 

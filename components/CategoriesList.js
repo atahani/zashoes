@@ -14,13 +14,11 @@ const CategoriesList = ({ categories, onPressCategory }) => (
   <Container horizontal showsHorizontalScrollIndicator={false}>
     {Object
       .keys(categories)
-      .map((key) => (
-        <CategoryLabel
-          title={categories[key].name}
-          key={categories[key].cid}
-          onPress={() => onPressCategory(key, categories[key].name)}
-        />
-      ))}
+      .map((key) => (<CategoryLabel
+        title={categories[key].name}
+        key={categories[key].cid}
+        onPress={() => onPressCategory(key, categories[key].name, categories[key].childKeys.length !== 0)} 
+      />))}
   </Container>
 );
 
