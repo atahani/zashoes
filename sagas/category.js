@@ -10,8 +10,6 @@ const getCategoriesByParentFlow = function* () {
   while (true) {
     const { parentCategory, page } = yield take(ActionType.GET_CATEGORIES_BY_PARENT);
     // before get categories should check have it inside state or not
-    // console.warn('the state is ', getState());
-    console.warn('status', getState().category[parentCategory]);
     if (!getState().category[parentCategory]) {
       const { response, error } = yield call(getReq, `${API_ROOT}/categories?fields=${categoryFields}&parentKey=${parentCategory}&page=${page}`);
       if (response) {
@@ -24,7 +22,7 @@ const getCategoriesByParentFlow = function* () {
         /* eslint no-console: "off" */
         console.warn('the error is ', error);
       }
-    }
+    } 
   }
 };
 

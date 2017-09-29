@@ -35,6 +35,8 @@
     "eslint-plugin-prettier": "^2.3.1",
     "jest-expo": "^21.0.0",
     "react-native-dotenv": "^0.1.0",
+    "reactotron-react-native": "^1.12.3",
+    "reactotron-redux": "^1.12.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6"
   }

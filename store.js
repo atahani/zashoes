@@ -4,6 +4,7 @@ import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import { AsyncStorage } from 'react-native';
+import Reactotron from 'reactotron-react-native';
 import reducers from './reducers';
 
 // defince it as gloabal variable
@@ -50,10 +51,14 @@ if (process.env.NODE_ENV === 'development') {
  */
 export const configureStore = initialState => new Promise((resolve, reject) => {
   try {
-    // create store
-    currentStore = createStore(reducers, initialState, customCompose);
+    // create store check is in development mode
+    if (process.env.NODE_ENV === 'development') {
+      currentStore = Reactotron.createStore(reducers, initialState, customCompose);
+    } else {
+      currentStore = createStore(reducers, initialState, customCompose);
+    }
     currentStore.runSaga = sagaMiddleware.run;
-    currentStore.close = () => currentStore.dispatch(END);
+    currentStore.close = () => currentStore.dispatch(END); 
     persistStore(currentStore, {
       whitelist: ['category'],
       storage: AsyncStorage,

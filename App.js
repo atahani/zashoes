@@ -1,12 +1,14 @@
 import React from 'react';
-import { Platform, StatusBar } from 'react-native';
+import { Platform, StatusBar, AsyncStorage } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 import { Provider } from 'react-redux';
+import Reactotron from 'reactotron-react-native';
 import { configureStore, setAsCurrentStore } from './store';
 import rootSaga from './sagas';
 import RootNavigation from './navigation/RootNavigation';
+import './ReactotronConfig';
 
 const Container = styled.View `
   flex: 1;
@@ -43,7 +45,10 @@ export default class BasicApp extends React.Component {
       },
     ]),
   ]).then(async () => {
-    // configure redux store
+    if (process.env.NODE_ENV === 'development') {
+      Reactotron.connect();
+      AsyncStorage.clear();
+    }
     const store = await configureStore();
     store.runSaga(rootSaga);
     setAsCurrentStore(store);
