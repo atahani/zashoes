@@ -5,9 +5,7 @@ import styled from 'styled-components/native';
 import CategoryLabel from './CategoryLabel';
 
 const Container = styled.ScrollView `
-  width: 100%;
   padding: 8px 0px 8px 8px;
-  margin-bottom: 5px;
 `;
 
 const CategoriesList = ({ categories, onPressCategory }) => (
