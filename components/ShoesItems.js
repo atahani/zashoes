@@ -51,7 +51,7 @@ const ShoesItems = ({ items, onEndReached }) => {
     data={items}
     renderItem={_renderItem}
     getItemLayout={_getItemLayout}
-    onEndReachedThreshold={5}
+    onEndReachedThreshold={1}
     onEndReached={onEndReached}
     showsVerticalScrollIndicator={false}
   />);

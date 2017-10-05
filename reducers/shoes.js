@@ -3,27 +3,21 @@ import ActionTypes from '../constants/ActionTypes';
 
 export default function shoesReducer(state = {}, action) {
   switch (action.type) {
-    // action > setShoesItem
-    case ActionTypes.SET_SHOES:
-    {
-      const newObj = mapKeys([action.payload], 'id');
-      return Object.assign({}, state, {
-        ...newObj,
-        ...state,
-      });
-    }
-    // action > setShoesItems
-    case ActionTypes.SET_SHOES_LIST:
-    {
-      // the payload === array of entity items
+    // action > setShoesByCategory
+    case ActionTypes.SET_SHOES_BY_CATEGORY: {
       const newItems = mapKeys(action.payload, 'id');
       return Object.assign({}, state, {
-        ...state,
-        ...newItems,
+        [action.category]: { ...state[action.category], ...newItems },
       });
     }
-    // action > clearShoesItems
-    case ActionTypes.CL_SHOES_LIST:
+    // action > clearShoesByCategory
+    case ActionTypes.CL_SHOES_BY_CATEGORY: {
+      return Object.assign({}, state, {
+        [action.category]: {},
+      });
+    }
+    // action > clearAllShoesByCategory
+    case ActionTypes.CL_ALL_SHOES_BY_CATEGORY:
       return {};
     default:
       return state;

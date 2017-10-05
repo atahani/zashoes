@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import values from 'lodash/values';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import { filterShoes, clearShoesItems } from '../actions/shoes';
+import { getShoesByCategory } from '../actions/shoes';
 import { getCategoriesByParent } from '../actions/category';
 import CategoriesList from '../components/CategoriesList';
 import ShoesItems from '../components/ShoesItems';
@@ -38,12 +38,15 @@ class ShoesListByCategory extends Component {
   componentDidMount() {
     const { category, shouldGetCategory } = this.props.navigation.state.params;
     const { dispatch } = this.props;
-    dispatch(clearShoesItems());
-    dispatch(filterShoes({ category: [category] }));
+    dispatch(getShoesByCategory(category));
     // get categories if have child or if it's top
     if (shouldGetCategory || category.split('-').length === 2) {
       dispatch(getCategoriesByParent(category));
     }
+  }
+
+  componentWillUnmount() {
+    // should clear 
   }
 
   onPressCategory(key, title, shouldGetCategory) {
@@ -58,9 +61,10 @@ class ShoesListByCategory extends Component {
   }
 
   onEndReached() {
-    const { dispatch, articlesParameters, resultAttr } = this.props;
-    if (resultAttr.page < resultAttr.totalPages) {
-      dispatch(filterShoes(articlesParameters, resultAttr.page + 1));
+    const { dispatch, resultAttr } = this.props;
+    const { category } = this.props.navigation.state.params;
+    if (resultAttr && resultAttr.page < resultAttr.totalPages) {
+      dispatch(getShoesByCategory(category, resultAttr.page + 1));
     }
   }
 
@@ -95,6 +99,9 @@ ShoesListByCategory.protoType = {
   dispatch: PropTypes.func,
 };
 
-const mapStateToProps = state => ({ shoesItems: state.shoes, articlesParameters: state.app.articles_parameters, resultAttr: state.app.result_attr });
+const mapStateToProps = (state, ownProps) => {
+  const category = ownProps.navigation.state.params.category;
+  return ({ shoesItems: state.shoes_by_category[category], resultAttr: state.app.result_attr_by_category[category] });
+};
 
 export default connect(mapStateToProps)(ShoesListByCategory);
