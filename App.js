@@ -5,6 +5,9 @@ import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 import { Provider } from 'react-redux';
 import Reactotron from 'reactotron-react-native';
+import { StyleProvider } from 'native-base';
+import getTheme from './native-base-theme/components';
+import material from './native-base-theme/variables/material';
 import { configureStore, setAsCurrentStore } from './store';
 import rootSaga from './sagas';
 import RootNavigation from './navigation/RootNavigation';
@@ -38,10 +41,11 @@ export default class BasicApp extends React.Component {
       {
         'zashoes-fontello': require('./assets/fonts/icon.ttf'),
       },
-      // We include SpaceMono because we use it in HomeScreen.js. Feel free to remove
-      // this if you are not using it in your app
       {
-        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+        Roboto: require('native-base/Fonts/Roboto.ttf'),
+      },
+      {
+        Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       },
     ]),
   ]).then(async () => {
@@ -76,11 +80,13 @@ export default class BasicApp extends React.Component {
     }
     return (
       <Provider store={this.state.store}>
-        <Container>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          {Platform.OS === 'android' && <StatusBarUnderlay />}
-          <RootNavigation />
-        </Container>
+        <StyleProvider style={getTheme(material)}>
+          <Container>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            {Platform.OS === 'android' && <StatusBarUnderlay />}
+            <RootNavigation />
+          </Container>
+        </StyleProvider>
       </Provider>
     );
   }

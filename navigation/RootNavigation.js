@@ -9,9 +9,11 @@ export default class RootNavigator extends React.Component {
   }
 
   componentWillUnmount() {
-    this._notificationSubscription = this
-      ._notificationSubscription
-      .remove();
+    if (this._notificationSubscription) {
+      this._notificationSubscription = this
+        ._notificationSubscription
+        .remove();
+    }
   }
 
   _registerForPushNotifications() {

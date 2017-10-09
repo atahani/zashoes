@@ -6,8 +6,8 @@
   "license": "",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "lint": "eslint *.{js,jsx} **/*.{js,jsx}",
-    "lint:fix": "eslint --fix *.{js,jsx} **/*.{js,jsx}",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint --fix . --ext .js",
     "test": "node ./node_modules/jest/bin/jest.js --watch"
   },
   "jest": {
@@ -17,6 +17,7 @@
     "@expo/samples": "^2.0.2",
     "expo": "^21.0.0",
     "lodash": "^4.17.4",
+    "native-base": "^2.3.2",
     "polished": "^1.7.0",
     "prop-types": "^15.6.0",
     "react": "16.0.0-alpha.12",
