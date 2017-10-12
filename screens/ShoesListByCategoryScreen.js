@@ -86,7 +86,7 @@ class ShoesListByCategory extends Component {
     return (
       <Container>
         {header()}
-        <ShoesItems items={values(shoesItems)} onEndReached={this.onEndReached} />
+        <ShoesItems items={values(shoesItems)} onEndReached={this.onEndReached} navigation={this.props.navigation} />
       </Container>
     );
   }

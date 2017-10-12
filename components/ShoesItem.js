@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components/native';
 import { Platform } from 'react-native';
 
-const Container = styled.View `
+const Container = styled.TouchableOpacity `
   display: flex;
   justify-content: space-between;
   width: ${props => `${props.width}px`};
@@ -72,6 +72,7 @@ const ShoesItem = ({
   price,
   originalPrice,
   imagePath,
+  onPress,
 }) => {
   const isOnSell = price.value < originalPrice.value;
   const priceNote = () => {
@@ -90,7 +91,7 @@ const ShoesItem = ({
     );
   };
   return (
-    <Container className={className} width={width} height={height} margin={margin}>
+    <Container className={className} width={width} height={height} margin={margin} onPress={onPress}>
       {isOnSell ? <DisRate>-{Math.round(((originalPrice.value - price.value) / originalPrice.value) * 100)}%</DisRate> : null}
       <Image source={{
         uri: imagePath,
@@ -103,7 +104,6 @@ const ShoesItem = ({
   );
 };
 
-/* eslint react/forbid-prop-types: "off" */
 ShoesItem.propTypes = {
   className: PropTypes.string,
   width: PropTypes.number,
@@ -115,6 +115,7 @@ ShoesItem.propTypes = {
   price: PropTypes.object,
   originalPrice: PropTypes.object,
   imagePath: PropTypes.string,
+  onPress: PropTypes.func,
 };
 
 export default ShoesItem;

@@ -9,7 +9,7 @@ const ShoesList = styled.FlatList `
   padding: 5px;
 `;
 
-const ShoesItems = ({ items, onEndReached }) => {
+const ShoesItems = ({ items, onEndReached, navigation }) => {
   // screen sizing
   const { width, height } = Dimensions.get('window');
   // orientation must fixed
@@ -34,7 +34,11 @@ const ShoesItems = ({ items, onEndReached }) => {
     margin={PRODUCT_ITEM_OFFSET}
     price={item.units[0].price}
     originalPrice={item.units[0].originalPrice}
-    imagePath={item.media.images[0].mediumHdUrl} 
+    imagePath={item.media.images[0].mediumHdUrl}
+    onPress={() => navigation
+      .navigate('ShoesItem', {
+        shoes: item,        
+      })}
   />);
   const _keyExtractor = (item) => item.id;
   const _getItemLayout = (data, index) => {
@@ -60,6 +64,7 @@ const ShoesItems = ({ items, onEndReached }) => {
 ShoesItems.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
   onEndReached: PropTypes.func,
+  navigation: PropTypes.object,
 };
 
 export default ShoesItems;

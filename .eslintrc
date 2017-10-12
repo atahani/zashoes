@@ -4,7 +4,10 @@
     "import/resolver": {
       "node": {
         "extensions": [".js", ".ios.js", ".android.js"]
-      }
+      } 
     }
+  },
+  "rules": {
+    "react/forbid-prop-types": 0
   }
 }

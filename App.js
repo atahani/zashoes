@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 import { Provider } from 'react-redux';
 import Reactotron from 'reactotron-react-native';
-import { StyleProvider } from 'native-base';
+import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
 import { configureStore, setAsCurrentStore } from './store';
@@ -40,11 +40,9 @@ export default class BasicApp extends React.Component {
       // fontello for for icons
       {
         'zashoes-fontello': require('./assets/fonts/icon.ttf'),
-      },
-      {
+      }, {
         Roboto: require('native-base/Fonts/Roboto.ttf'),
-      },
-      {
+      }, {
         Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       },
     ]),
@@ -81,11 +79,13 @@ export default class BasicApp extends React.Component {
     return (
       <Provider store={this.state.store}>
         <StyleProvider style={getTheme(material)}>
-          <Container>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            {Platform.OS === 'android' && <StatusBarUnderlay />}
-            <RootNavigation />
-          </Container>
+          <Root>
+            <Container>
+              {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+              {Platform.OS === 'android' && <StatusBarUnderlay />}
+              <RootNavigation />
+            </Container>
+          </Root>
         </StyleProvider>
       </Provider>
     );

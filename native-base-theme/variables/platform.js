@@ -1,6 +1,7 @@
 import color from 'color';
 
 import { Platform, Dimensions, PixelRatio } from 'react-native';
+import AppColors from '../../constants/Colors';
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
@@ -108,7 +109,8 @@ export default {
   cardDefaultBg: '#fff',
 
   // Color
-  brandPrimary: platform === 'ios' ? '#007aff' : '#3F51B5',
+  // brandPrimary: platform === 'ios' ? '#007aff' : '#3F51B5',
+  brandPrimary: AppColors.tintColor,
   brandInfo: '#62B1F6',
   brandSuccess: '#5cb85c',
   brandDanger: '#d9534f',
